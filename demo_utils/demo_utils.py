@@ -960,11 +960,6 @@ def load_sin_res(fpath):
 
     return [train_loss,train_acc,test_acc,infer_acc]
 
-import os
-import re
-
-import os
-import re
 
 def get_next_demo_index(directory,match_word):
     """
@@ -976,6 +971,10 @@ def get_next_demo_index(directory,match_word):
     Returns:
         int: The next available index for a new file.
     """
+    if os.path.exists(directory) is False:
+        os.makedirs(directory)
+        return 1
+
     # List all files in the directory
     files = os.listdir(directory)
     
